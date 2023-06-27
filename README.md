@@ -1,0 +1,2 @@
+# diagno
+laboratory management system
