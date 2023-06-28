@@ -23,5 +23,8 @@ public class AppoinmentsController {
     public Iterable<Appoinments>findAll(){
         return appoinmentsService.findAll();
     }
-
+    @GetMapping("/{id}")
+    public Appoinments findOne(@PathVariable Long id){
+        return appoinmentsService.findAppoinments(id);
+    }
 }
