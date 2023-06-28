@@ -17,13 +17,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         super();
     }
 
-    @ExceptionHandler(NoteNotFoundException.class)
+    @ExceptionHandler(UserNotFoundException.class)
     protected ResponseEntity<Object> handleNotFound(Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, "Note not found", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
     @ExceptionHandler({
-            NoteIdMismatchException.class,
+            UserIdMismatchException.class,
             ConstraintViolationException.class,
             DataIntegrityViolationException.class
     })
