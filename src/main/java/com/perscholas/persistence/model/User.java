@@ -3,6 +3,8 @@ package com.perscholas.persistence.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -10,31 +12,41 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "User")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserId")
+    @Column(name = "id")
     private long id;
 
-    @Column(name = "FirstName")
-    private String ufname;
+    @Column(name = "user_id")
+    private long userId;
 
-    @Column(name = "LastName")
-    private String ulname;
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column(name = "email")
-    private String uemail;
+    private String email;
 
-    @Column(name = "PhoneNumber")
-    private int uphone;
+    @Column(name = "phone_number")
+    private int phoneNumber;
 
-    @Column(name = "Age")
-    private int uage;
+    @Column(name = "age")
+    private int age;
 
-    @Column(name = "Gender")
-    private int ugender;
+    @Column(name = "gender")
+    private String gender;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable (name ="user_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id ", referencedColumnName = "id"
+            )})
+    public List<Role> roles = new ArrayList<>();
 
 
 

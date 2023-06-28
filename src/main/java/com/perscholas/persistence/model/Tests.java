@@ -12,24 +12,31 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="Tests")
+@Table(name="tests")
 public class Tests {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TestID")
-    private int tid;
+    @Column(name = "id")
+    private long id;
 
-    @Column(name = "TestName")
-    private String tname;
+    @Column(name = "test_id")
+    private long testId;
 
-    @Column(name = "TestType")
-    private String ttype;
+    @Column(name = "test_name")
+    private String testName;
 
-    @Column(name = "Range")
-    private int trange;
+    @Column(name = "test_type")
+    private String testType;
 
-    @Column(name = "Unit")
-    private int tunit;
+    @Column(name = "lower_range")
+    private String lowerRange;
+
+    @Column(name = "upper_range")
+    private String upperRange;
+
+    @Column(name = "result_unit")
+    private String resultUnit;
 
 }
 

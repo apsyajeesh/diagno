@@ -1,6 +1,6 @@
 package com.perscholas.controller;
 
-import com.perscholas.persistence.model.Appoinments;
+import com.perscholas.persistence.model.Appointments;
 import com.perscholas.service.AppoinmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,17 +14,25 @@ public class AppoinmentsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Appoinments create(@RequestBody Appoinments appoinments){
-        Appoinments appoinments1=appoinmentsService.createAppoinments(appoinments);
+    public Appointments create(@RequestBody Appointments appoinments){
+        Appointments appoinments1=appoinmentsService.createAppoinments(appoinments);
         return appoinments1;
     }
 
     @GetMapping
-    public Iterable<Appoinments>findAll(){
+    public Iterable<Appointments>findAll(){
         return appoinmentsService.findAll();
     }
     @GetMapping("/{id}")
-    public Appoinments findOne(@PathVariable Long id){
+    public Appointments findOne(@PathVariable Long id){
         return appoinmentsService.findAppoinments(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        appoinmentsService.deleteAppoinments(id);
+    }
+    @PutMapping("/{id}")
+    public Appointments updateAppoinments(@RequestBody Appointments appoinments, @PathVariable Long id){
+        return appoinmentsService.updateAppoinments(appoinments,id);
     }
 }
