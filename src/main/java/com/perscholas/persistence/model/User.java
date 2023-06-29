@@ -20,9 +20,6 @@ public class User {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "user_id")
-    private long userId;
-
     @Column(name = "first_name")
     private String firstName;
 
@@ -31,6 +28,9 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "phone_number")
     private int phoneNumber;

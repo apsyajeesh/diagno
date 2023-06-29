@@ -6,13 +6,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Setter
 @Getter
-@ToString
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="results")
-public class Results {
+@ToString
+@Table(name="appointments")
+public class Appointment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,12 +25,9 @@ public class Results {
     @Column(name = "test_id")
     private long testId;
 
-    @Column(name = "appointment_id")
-    private long appointmentId;
+    @Column(name = "appointment_date")
+    private Date appointmentDate;
 
-    @Column(name = "test_date")
-    private Date testDate;
-
-    @Column(name = "result_status")
-    private String resultStatus;
+    @Column(name = "status")
+    private String status;
 }

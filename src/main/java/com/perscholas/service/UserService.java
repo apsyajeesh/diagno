@@ -14,6 +14,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     public User createUser(User user) {
         return userRepository.save(user);
     }
@@ -24,6 +25,11 @@ public class UserService {
 
     public User findUser(Long id) throws UserNotFoundException {
         return userRepository.findById(id)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
+    public User findByEmail(String email) throws UserNotFoundException {
+        return userRepository.findByEmail(email)
                 .orElseThrow(UserNotFoundException::new);
     }
 
