@@ -13,6 +13,18 @@ public class HomeController {
     @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("appName", appName);
-        return "home";
+        return "index";
     }
+
+    @GetMapping("/login")
+    public String loginPage(Model model) {
+        model.addAttribute("appName", appName);
+        return "login";
+    }
+    @GetMapping("/account")
+    public  String accountPage(Model model){
+        model.addAttribute("appName", appName);
+        return "account";
+    }
+
 }

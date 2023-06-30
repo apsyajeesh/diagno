@@ -1,119 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Care</title>
-  <!-- ======= Styles ====== -->
-  <link rel="stylesheet" href="assets/css/account.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Care</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" th:href="@{/css/account.css}">
 </head>
 
 <body>
-<!-- =============== Navigation ================ -->
-<div class="container">
-  <div class="navigation">
-    <ul>
-      <li>
-        <a href="#">
-          <span class="icon"><ion-icon name="accessibility-outline"></ion-icon></span>
-          <span class="title">Smart Care</span>
-        </a>
-      </li>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="accessibility-outline"></ion-icon></span>
+                        <span class="title">Smart Care</span>
+                    </a>
+                </li>
 
-      <li>
-        <a href="#">
-          <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-          <span class="title">My Account</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
-          <span class="title">Schedule an Appointment</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
-          <span class="title">Results</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon"><ion-icon name="card-outline"></ion-icon></span>
-          <span class="title">Pay Bills</span>
-        </a>
-      </li>
-      <li>
-        <a href="./index.html" >
-          <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-          <span class="title">Logout</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <!-- ========================= Main ==================== -->
-  <div class="main">
-    <div class="details">
-      <div class="recentOrders">
-        <div class="cardHeader">
-          <h2>Recent Appointments</h2>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">My Account</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
+                        <span class="title">Schedule an Appointment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+                        <span class="title">Results</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="card-outline"></ion-icon></span>
+                        <span class="title">Pay Bills</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./index.html" >
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <table>
-          <thead>
-          <tr>
-            <td>Name</td>
-            <td>Location</td>
-            <td>Test Name</td>
-            <td>Appointment Date</td>
-            <td>Status</td>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Peter Parker</td>
-            <td>Los Angeles</td>
-            <td>Glucose Test</td>
-            <td>12 Aug 2023</td>
-            <td><span class="status scheduled">Scheduled</span></td>
-          </tr>
-          <tr>
-            <td>Emily Parker</td>
-            <td>Los Angeles</td>
-            <td>Covid 19 Test</td>
-            <td>1 Jun 2013</td>
-            <td><span class="status resultReady">Result Ready</span></td>
-          </tr>
-          <tr>
-            <td>Allison Parker</td>
-            <td>Los Angeles</td>
-            <td>Food Allery Test</td>
-            <td>1 May 2023</td>
-            <td><span class="status resultPending">Result Pending</span></td>
-          </tr>
-          <tr>
-            <td>Ryan Parker</td>
-            <td>Simi Valley</td>
-            <td>Other Test</td>
-            <td>1 Jun 2023</td>
-            <td><span class="status cancelled">Cancelled</span></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Recent Appointments</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Location</td>
+                                <td>Test Name</td>
+                                <td>Appointment Date</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Peter Parker</td>
+                                <td>Los Angeles</td>
+                                <td>Glucose Test</td>
+                                <td>12 Aug 2023</td>
+                                <td><span class="status scheduled">Scheduled</span></td>
+                            </tr>
+                            <tr>
+                                <td>Emily Parker</td>
+                                <td>Los Angeles</td>
+                                <td>Covid 19 Test</td>
+                                <td>1 Jun 2013</td>
+                                <td><span class="status resultReady">Result Ready</span></td>
+                            </tr>
+                            <tr>
+                                <td>Allison Parker</td>
+                                <td>Los Angeles</td>
+                                <td>Food Allery Test</td>
+                                <td>1 May 2023</td>
+                                <td><span class="status resultPending">Result Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ryan Parker</td>
+                                <td>Simi Valley</td>
+                                <td>Other Test</td>
+                                <td>1 Jun 2023</td>
+                                <td><span class="status cancelled">Cancelled</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<!-- =========== Scripts =========  -->
-<script src="assets/js/main.js"></script>
+    <!-- =========== Scripts =========  -->
+    <script th:src="@{/js/main.js}"></script>
 
-<!-- ====== ionicons ======= -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

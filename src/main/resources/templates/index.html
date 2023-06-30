@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Care</title>
   <!-- ======= Styles ====== -->
-  <link rel="stylesheet" href="assets/css/home.css">
+  <link th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
-<header>
-  <div class="wrapper">
-    <div class="logo">
-      <a href="index.html"><img src="assets/imgs/logo.jpeg" alt=""></a>
+  <header>
+    <div class="wrapper">
+      <div class="logo">
+        <a href="index.html"><img th:src="@{/imgs/logo.jpeg}" alt=""></a>
+      </div>
+      <!-- =============== Top Menu Navigation ================ -->
+      <ul class="nav-area">
+        <li><a href="#">Home</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
     </div>
-    <!-- =============== Top Menu Navigation ================ -->
-    <ul class="nav-area">
-      <li><a href="#">Home</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
-</header>
+  </header>
 </body>
 </html>

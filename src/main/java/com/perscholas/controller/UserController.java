@@ -1,5 +1,6 @@
 package com.perscholas.controller;
 
+import com.perscholas.dto.UserDto;
 import com.perscholas.persistence.model.User;
 import com.perscholas.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,8 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User user) {
-        User user1 = userService.createUser(user);
-        return user1;
+    public User create(@RequestBody UserDto userDto) {
+        return userService.createUser(userDto);
     }
 
     @GetMapping
