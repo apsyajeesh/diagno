@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .antMatchers("/api/user").permitAll()
                 .antMatchers("/index").permitAll()
-                //.antMatchers("/account").hasRole("ADMIN")
+                .antMatchers("/account").hasRole("ADMIN")
                 .and()
                 .formLogin(
                         form -> form

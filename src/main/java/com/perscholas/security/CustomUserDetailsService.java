@@ -22,11 +22,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-        com.perscholas.persistence.model.User user = userRepository.findByEmail(usernameOrEmail).get();
-        return new User(user.getEmail(),
-                user.getPassword(),
-                user.getRoles().stream()
-                        .map((role) -> new SimpleGrantedAuthority(role.getName()))
-                        .collect(Collectors.toList()));
+        com.perscholas.persistence.model.User user = userRepository.findByEmail(usernameOrEmail).orElse(null);
+        if (user != null) {
+            return new User(user.getEmail(),
+                    user.getPassword(),
+                    user.getRoles().stream()
+                            .map((role) -> new SimpleGrantedAuthority(role.getName()))
+                            .collect(Collectors.toList()));
+        } else {
+            throw new UsernameNotFoundException("Invalid email or password");
+        }
     }
 }
