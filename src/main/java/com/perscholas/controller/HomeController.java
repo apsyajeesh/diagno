@@ -10,7 +10,7 @@ public class HomeController {
     @Value("${spring.application.name}")
     String appName;
 
-    @GetMapping("/")
+    @GetMapping(value = {"/", "index"})
     public String homePage(Model model) {
         model.addAttribute("appName", appName);
         return "index";
@@ -25,6 +25,11 @@ public class HomeController {
     public  String accountPage(Model model){
         model.addAttribute("appName", appName);
         return "account";
+    }
+    @GetMapping("/register")
+    public String registerPage(Model model){
+        model.addAttribute("appName",appName);
+        return "register";
     }
 
 }

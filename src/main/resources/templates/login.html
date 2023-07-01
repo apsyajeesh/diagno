@@ -1,80 +1,71 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Care</title>
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
-    <!-- =============== Icons ================ -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="forms-container">
-        <div class="signin-signup">
-          <form method="post" role="form" th:action="@{/login}" class="sign-in-form" id="loginForm">
-            <h2 class="title">Sign In</h2>
-            <div class="input-field">
-              <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-              <input type="text" placeholder="Email" id="username" name="username"/>
-            </div>
-            <div class="input-field">
-              <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-              <input type="password" placeholder="Password" id="password" name="password"/>
-            </div>
-            <input type="submit" value="Login" class="btn solid" id="loginButton"/>
-            <span id="errorMessage" style="color: red;"></span>
-          </form>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Muhamad Nauval Azhar">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="This is a login page template based on Bootstrap 5">
+  <title>Bootstrap 5 Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
 
-          <form action="" class="sign-up-form">
-            <h2 class="title">Create an Account</h2>
-            <div class="input-field">
-              <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-              <input type="text" placeholder="Username" />
-            </div>
-            <div class="input-field">
-              <span class="icon"><ion-icon name="male-female-outline"></ion-icon></span>
-              <select id="gender" name="gender">
-                <option value="" disabled selected>Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="input-field">
-              <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-              <input type="text" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,6}$" placeholder="Email">
-            </div>
-            <div class="input-field">
-              <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" value="Sign Up" class="btn solid" />
-          </form>
+<body>
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-sm-center h-100">
+      <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+        <div class="text-center my-5">
+          <a th:href="@{/index}"> <img th:src="@{/imgs/logo.jpeg}" alt="logo" width="100"> </a>
         </div>
-      </div>
-      <div class="panels-container">
+        <div class="card shadow-lg">
+          <div class="card-body p-5">
+            <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+            <form method="POST" class="needs-validation" novalidate="" autocomplete="off" role="form" th:action="@{/login}" id="loginForm">
+              <div class="mb-3">
+                <input id="username" type="email" class="form-control" name="username" value="" required autofocus placeholder="E-Mail Address">
+                <div class="invalid-feedback">
+                  Email is invalid
+                </div>
+              </div>
 
-        <div class="panel left-panel">
-            <div class="content">
-                <h3>Don't have an account?</h3>
-                <p>Sign up to schedule an appointment for your lab work</p>
-                <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+              <div class="mb-3">
+                <div class="mb-2 w-100">
+                  <a href="forgot.html" class="float-end">
+                    Forgot Password?
+                  </a>
+                </div>
+                <input id="password" type="password" class="form-control" name="password" required placeholder="Password">
+                <div class="invalid-feedback">
+                  Password is required
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <div class="form-check">
+                  <input type="checkbox" name="remember" id="remember" class="form-check-input">
+                  <label for="remember" class="form-check-label">Remember Me</label>
+                </div>
+                <button type="submit" class="btn btn-primary ms-auto">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer py-3 border-0">
+            <div class="text-center">
+              Don't have an account? <a th:href="@{/register}" class="text-dark">Create One</a>
             </div>
+          </div>
         </div>
-
-        <div class="panel right-panel">
-        <div class="content">
-                <h3>Already have an account</h3>
-                <p>Please sign in to manage your appointment and view results</p>
-                <button class="btn transparent" id="sign-in-btn">Sign In</button>
-            </div>
+        <div class="text-center mt-5 text-muted">
+          Copyright &copy; 2023-2024 &mdash; Perscholas
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-<!--    <script th:src="@{/js/main.js}"></script>-->
-  </body>
+<script src="js/login.js"></script>
+</body>
 </html>

@@ -31,34 +31,3 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
-
-function login() {
-  var userName = document.getElementById("userName").value;
-  var password = document.getElementById("password").value;
-
-  var users = [{
-      "userName" : "apsy",
-      "password" : "apsy"
-  },
-  {
-      "userName" : "perscholas",
-      "password" : "perscholas"
-  }];
-
-  var loginSucess = false;
-  for(let i = 0; i < users.length; i++) {
-      let obj = users[i];
-      if(userName == obj.userName && password == obj.password) {
-          document.getElementById("loginForm").action = 'account.html'
-          document.getElementById("loginForm").submit();
-          loginSucess = true;
-      }
-  }
-
-  if (loginSucess) {
-    console.log("Successfully logged in to the application");
-  } else {
-    const errorMessage = document.getElementById("errorMessage");
-    errorMessage.textContent = "Invalid username or password.";
-  }
-}

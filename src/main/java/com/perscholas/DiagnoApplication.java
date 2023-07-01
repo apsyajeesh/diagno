@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("com.perscholas.persistence.repo")
 @EntityScan("com.perscholas.persistence.model")
 @SpringBootApplication
-public class DemoApplication {
+public class DiagnoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(DiagnoApplication.class, args);
     }
 
 }
