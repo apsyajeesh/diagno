@@ -20,38 +20,47 @@
         <div class="card shadow-lg">
           <div class="card-body p-5">
             <h1 class="fs-4 card-title fw-bold mb-4">Create Account</h1>
-            <form method="POST" class="needs-validation" novalidate="" autocomplete="off">
-
+            <div th:if="${param.success}">
+              <div class="alert alert-info">
+                You have successfully registered to Diagno!. Please login to manage your appointments.
+              </div>
+            </div>
+            <form method="POST"
+                  class="needs-validation"
+                  novalidate=""
+                  autocomplete="off"
+                  th:action="@{/register/save}"
+                  th:object="${user}">
               <div class="mb-3">
-                <input id="firstname" type="text" class="form-control" name="firstname" value="" required autofocus placeholder="First Name">
+                <input id="firstname" type="text" class="form-control" name="firstname" value="" required autofocus placeholder="First Name" th:field="*{firstName}"/>
                 <div class="invalid-feedback">
                   First Name is required
                 </div>
               </div>
 
               <div class="mb-3">
-                <input id="lastname" type="text" class="form-control" name="lastname" value="" required autofocus placeholder="Last Name">
+                <input id="lastname" type="text" class="form-control" name="lastname" value="" required autofocus placeholder="Last Name" th:field="*{lastName}">
                 <div class="invalid-feedback">
                   Last Name is required
                 </div>
               </div>
 
               <div class="mb-3">
-                <input id="age" type="text" class="form-control" name="age" value="" required autofocus placeholder="Age">
+                <input id="age" type="text" class="form-control" name="age" required autofocus placeholder="Age" th:field="*{age}">
                 <div class="invalid-feedback">
                   Age is required
                 </div>
               </div>
 
               <div class="mb-3">
-                <input id="phonenumber" type="text" class="form-control" name="phonenumber" value="" required autofocus placeholder="Phone Number">
+                <input id="phonenumber" type="text" class="form-control" name="phonenumber" required autofocus placeholder="Phone Number" th:field="*{phoneNumber}">
                 <div class="invalid-feedback">
                   Phone Number is required
                 </div>
               </div>
 
               <div class="mb-3">
-                <select class="form-select" id="gender" name="gender" required>
+                <select class="form-select" id="gender" name="gender" required th:field="*{gender}">
                   <option value="" selected disabled>Select gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -64,14 +73,16 @@
 
 
               <div class="mb-3">
-                <input id="email" type="email" class="form-control" name="email" value="" required autofocus placeholder="E-Mail Address">
+                <input id="email" type="email" class="form-control" name="email" value="" required autofocus placeholder="E-Mail Address" th:field="*{email}">
                 <div class="invalid-feedback">
                   Email is invalid
                 </div>
+                <p th:errors = "*{email}" class="text-danger"
+                   th:if="${#fields.hasErrors('email')}"></p>
               </div>
 
               <div class="mb-3">
-                <input id="password" type="password" class="form-control" name="password" required autofocus placeholder="Password">
+                <input id="password" type="password" class="form-control" name="password" required autofocus placeholder="Password" th:field="*{password}">
                 <div class="invalid-feedback">
                   Password is required
                 </div>

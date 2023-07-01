@@ -18,6 +18,12 @@
         <div class="text-center my-5">
           <a th:href="@{/index}"> <img th:src="@{/imgs/logo.jpeg}" alt="logo" width="100"> </a>
         </div>
+        <div th:if="${param.error}">
+          <div class="alert alert-danger">Invalid Email or Password</div>
+        </div>
+        <div th:if="${param.logout}">
+          <div class="alert alert-success"> You have been logged out.</div>
+        </div>
         <div class="card shadow-lg">
           <div class="card-body p-5">
             <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
