@@ -1,118 +1,48 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Care</title>
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" th:href="@{/css/account.css}">
-</head>
-
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="accessibility-outline"></ion-icon></span>
-                        <span class="title">Smart Care</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                        <span class="title">My Account</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
-                        <span class="title">Schedule an Appointment</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
-                        <span class="title">Results</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="icon"><ion-icon name="card-outline"></ion-icon></span>
-                        <span class="title">Pay Bills</span>
-                    </a>
-                </li>
-                <li>
-                    <a th:href="@{/index}" >
-                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                        <span class="title">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="details">
-                <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Recent Appointments</h2>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Location</td>
-                                <td>Test Name</td>
-                                <td>Appointment Date</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Peter Parker</td>
-                                <td>Los Angeles</td>
-                                <td>Glucose Test</td>
-                                <td>12 Aug 2023</td>
-                                <td><span class="status scheduled">Scheduled</span></td>
-                            </tr>
-                            <tr>
-                                <td>Emily Parker</td>
-                                <td>Los Angeles</td>
-                                <td>Covid 19 Test</td>
-                                <td>1 Jun 2013</td>
-                                <td><span class="status resultReady">Result Ready</span></td>
-                            </tr>
-                            <tr>
-                                <td>Allison Parker</td>
-                                <td>Los Angeles</td>
-                                <td>Food Allery Test</td>
-                                <td>1 May 2023</td>
-                                <td><span class="status resultPending">Result Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>Ryan Parker</td>
-                                <td>Simi Valley</td>
-                                <td>Other Test</td>
-                                <td>1 Jun 2023</td>
-                                <td><span class="status cancelled">Cancelled</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<div class="mb-3">
+    <a href="#" class="btn btn-sm btn-primary" onclick="loadAppointment()">Schedule Now</a>
+</div>
+<div class="card">
+    <h5 class="card-header">Recent appointments</h5>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Test Name</th>
+                    <th scope="col">Who</th>
+                    <th scope="col">When</th>
+                    <th scope="col">Where</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">17371705</th>
+                    <td>Test Name1</td>
+                    <td>John</td>
+                    <td>Aug 31 2023</td>
+                    <td>Simi Valley</td>
+                    <td><a href="#" class="btn btn-sm btn-primary">Scheduled</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">17371705</th>
+                    <td>Test Name2</td>
+                    <td>Anna</td>
+                    <td>Aug 31 2023</td>
+                    <td>Simi Valley</td>
+                    <td><a href="#" class="btn btn-sm btn-primary">Checked In</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">17371705</th>
+                    <td>Test Name3</td>
+                    <td>Mathew</td>
+                    <td>Aug 31 2023</td>
+                    <td>Simi Valley</td>
+                    <td><a href="#" class="btn btn-sm btn-primary">Result Ready</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <!-- =========== Scripts =========  -->
-    <script th:src="@{/js/main.js}"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
-</html>
+</div>
