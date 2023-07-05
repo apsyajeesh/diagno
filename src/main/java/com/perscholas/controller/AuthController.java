@@ -1,6 +1,7 @@
 package com.perscholas.controller;
 
 import com.perscholas.dto.UserDto;
+import com.perscholas.persistence.model.Appointment;
 import com.perscholas.persistence.model.User;
 import com.perscholas.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,7 +42,16 @@ public class AuthController {
     @GetMapping("/account")
     public String accountPage(Model model) {
         model.addAttribute("appName", appName);
-        return "account";
+        model.addAttribute("page", "account.html");
+        return "main";
+    }
+
+    @GetMapping("/appointment")
+    public String appointmentPage(Model model) {
+        model.addAttribute("appName", appName);
+        model.addAttribute("page", "appointment.html");
+        model.addAttribute("user", new Appointment());
+        return "main";
     }
 
     @GetMapping("/register")

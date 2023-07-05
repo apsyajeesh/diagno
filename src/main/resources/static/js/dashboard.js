@@ -1,24 +1,16 @@
 // JavaScript code to load different content based on navigation clicks
-loadAccount();
 
-function loadAccount() {
-  // Perform an AJAX request or update the content directly here
-  $("#dynamicContent").load("account.html");
-}
+$(document).ready(function() {
+  const startDate = document.getElementById('startDate');
+  const startDateListener = function(event) {
+    const selectedDate = event.target.value;
+    loadAppointments(selectedDate);
+    startDate.removeEventListener('change', startDateListener);
+  };
 
-function loadAppointment() {
-  // Perform an AJAX request or update the content directly here
-    $("#dynamicContent").load("appointment.html", function() {
-        const startDate = document.getElementById('startDate');
-        const startDateListener = function onChange(event) {
-          const selectedDate = event.target.value;
-          loadAppointments(selectedDate);
-          startDate.removeEventListener('change', startDateListener);
-    };
+  startDate.addEventListener('change', startDateListener);
+});
 
-    startDate.addEventListener('change', startDateListener);
-    });
-}
 
 function loadResults() {
   // Perform an AJAX request or update the content directly here
