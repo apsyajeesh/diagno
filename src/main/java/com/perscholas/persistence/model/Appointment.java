@@ -3,6 +3,7 @@ package com.perscholas.persistence.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -22,11 +23,17 @@ public class Appointment {
     @Column(name = "user_id")
     private long userId;
 
-    @Column(name = "test_id")
-    private long testId;
+    @Column(name = "patient_name")
+    private String patientName;
+
+    @Column(name = "test_name")
+    private String testName;
+
+    @Column(name = "location")
+    private String location;
 
     @Column(name = "appointment_date")
-    private Date appointmentDate;
+    private LocalDateTime appointmentDate;
 
     @Column(name = "status")
     private String status;

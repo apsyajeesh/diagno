@@ -1,10 +1,12 @@
 package com.perscholas.controller;
 
 import com.perscholas.dto.UserDto;
-import com.perscholas.persistence.model.Appointment;
 import com.perscholas.persistence.model.User;
+import com.perscholas.service.AppointmentService;
 import com.perscholas.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,17 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
-
-
 @Controller
 public class AuthController {
     private UserService userService;
+    final private AppointmentService appointmentService;
 
     @Value("${spring.application.name}")
     String appName;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService,
+                          AppointmentService appointmentService) {
         this.userService = userService;
+        this.appointmentService = appointmentService;
     }
 
     @GetMapping(value = {"/", "index"})
@@ -35,22 +38,16 @@ public class AuthController {
 
     @GetMapping("/login")
     public String loginPage(Model model) {
-        model.addAttribute("appName", appName);
         return "login";
     }
 
     @GetMapping("/account")
     public String accountPage(Model model) {
-        model.addAttribute("appName", appName);
         model.addAttribute("page", "account.html");
-        return "main";
-    }
-
-    @GetMapping("/appointment")
-    public String appointmentPage(Model model) {
-        model.addAttribute("appName", appName);
-        model.addAttribute("page", "appointment.html");
-        model.addAttribute("user", new Appointment());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(authentication.getName());
+        model.addAttribute("user", user);
+        model.addAttribute("appointments", appointmentService.findAppointments(user.getId()));
         return "main";
     }
 

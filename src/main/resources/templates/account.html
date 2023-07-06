@@ -1,53 +1,41 @@
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div th:fragment="content">
-<div class="mb-3">
-    <a href="#" class="btn btn-sm btn-primary" onclick="loadAppointment()">Schedule Now</a>
-</div>
-<div class="card">
-    <h5 class="card-header">Recent appointments</h5>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Code</th>
-                    <th scope="col">Test Name</th>
-                    <th scope="col">Who</th>
-                    <th scope="col">When</th>
-                    <th scope="col">Where</th>
-                    <th scope="col">Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">17371705</th>
-                    <td>Test Name1</td>
-                    <td>John</td>
-                    <td>Aug 31 2023</td>
-                    <td>Simi Valley</td>
-                    <td><a href="#" class="btn btn-sm btn-primary">Scheduled</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">17371705</th>
-                    <td>Test Name2</td>
-                    <td>Anna</td>
-                    <td>Aug 31 2023</td>
-                    <td>Simi Valley</td>
-                    <td><a href="#" class="btn btn-sm btn-primary">Checked In</a></td>
-                </tr>
-                <tr>
-                    <th scope="row">17371705</th>
-                    <td>Test Name3</td>
-                    <td>Mathew</td>
-                    <td>Aug 31 2023</td>
-                    <td>Simi Valley</td>
-                    <td><a href="#" class="btn btn-sm btn-primary">Result Ready</a></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="mb-3">
+        <p>Welcome, <span th:text="${user.firstName} + ' ' + ${user.lastName} + '!'"></span></p>
+    </div>
+    <div class="mb-3">
+        <a th:href="@{/appointment}" class="btn btn-sm btn-primary">Schedule Now</a>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Recent appointments</h5>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Test Name</th>
+                        <th scope="col">Who</th>
+                        <th scope="col">When</th>
+                        <th scope="col">Where</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="appointment : ${appointments}">
+                        <td th:text="${appointment.id}"></td>
+                        <td th:text="${appointment.testName}"></td>
+                        <td th:text="${appointment.patientName}"></td>
+                        <td th:text="${appointment.appointmentDate}"></td>
+                        <td th:text="${appointment.location}"></td>
+                        <td th:text="${appointment.status}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </html>

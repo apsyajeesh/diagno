@@ -54,6 +54,14 @@ function loadAppointments(date) {
           formCheck.appendChild(label);
           column.appendChild(formCheck);
           row.appendChild(column);
+
+          // Add event listener to capture the selected appointment time
+          input.addEventListener('change', function() {
+            if (input.checked) {
+              const selectedTime = input.value;
+              const selectedTimeInput = document.getElementById('selectedTimeInput');
+            }
+          });
         }
       }
 

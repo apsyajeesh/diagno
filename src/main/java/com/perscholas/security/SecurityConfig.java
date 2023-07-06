@@ -26,6 +26,7 @@ public class SecurityConfig {
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/index").permitAll()
                 .antMatchers("/account").hasRole("ADMIN")
+                .antMatchers("/appointment/**").hasRole("ADMIN")
                 .and()
                 .formLogin(
                         form -> form
