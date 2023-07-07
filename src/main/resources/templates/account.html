@@ -8,9 +8,14 @@
         <p>Welcome, <span th:text="${user.firstName} + ' ' + ${user.lastName} + '!'"></span></p>
     </div>
     <div class="mb-3">
-        <a th:href="@{/appointment}" class="btn btn-sm btn-primary">Schedule an appointment now</a>
+        <a th:href="@{/appointment/create}" class="btn btn-sm btn-primary">Schedule an appointment now</a>
     </div>
     <div class="card">
+        <div th:if="${param.success}">
+            <div class="alert alert-info">
+                Successfully cancelled your appointment
+            </div>
+        </div>
         <div th:if="${not appointments.isEmpty()}">
         <h5 class="card-header">Recent appointments</h5>
         <div class="card-body">
@@ -37,8 +42,11 @@
                         <td th:text="${appointment.status}"></td>
                         <td>
                             <div class="d-flex">
-                                <button type="button" class="btn btn-primary" onclick="modifyAppointment(${appointment.id})">Modify</button>
-                                <button type="button" class="btn btn-danger">Cancel</button>
+                                <a th:href="@{/appointment/{id}/edit(id=${appointment.id})}">Modify</a>
+                            </div>
+
+                            <div class="d-flex">
+                                <a th:href="@{/appointment/{id}/cancel(id=${appointment.id})}">Cancel</a>
                             </div>
                         </td>
                     </tr>

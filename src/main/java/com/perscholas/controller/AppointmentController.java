@@ -26,8 +26,8 @@ public class AppointmentController {
         this.userService = userService;
     }
 
-    @GetMapping("/appointment")
-    public String appointmentPage(Model model) {
+    @GetMapping("/appointment/create")
+    public String showCreateForm(Model model) {
         model.addAttribute("page", "appointment.html");
         model.addAttribute("appointment", new Appointment());
         return "main";
@@ -40,15 +40,18 @@ public class AppointmentController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(authentication.getName());
         appointmentService.createAppointment(user.getId(), appointmentDto);
-        return "redirect:/appointment?success";
+        return "redirect:/appointment/create?success";
     }
 
-    @PutMapping("/appointment/{id}")
-    public String updateAppointment(@PathVariable("id") Long id,
-                                    @ModelAttribute("appointment") AppointmentDto updatedAppointment) throws UserNotFoundException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(authentication.getName());
-        appointmentService.createAppointment(user.getId(), updatedAppointment);
-        return "redirect:/appointment?success";
+    @GetMapping("/appointment/{id}/edit")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("page", "appointment.html");
+        model.addAttribute("appointment", appointmentService.editAppointment(id));
+        return "main";
+    }
+    @GetMapping("/appointment/{id}/cancel")
+    public String showCancelForm(@PathVariable("id") Long id, Model model) {
+        appointmentService.deleteAppointment(id);
+        return "redirect:/account?success";
     }
 }

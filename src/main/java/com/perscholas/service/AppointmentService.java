@@ -37,6 +37,18 @@ public class AppointmentService {
         appointmentRepository.save(appointment);
     }
 
+    public AppointmentDto editAppointment(Long id) {
+        Appointment appointment = findAppointment(id);
+        AppointmentDto appointmentDto = new AppointmentDto();
+        appointmentDto.setId(appointment.getId());
+        appointmentDto.setTestName(appointment.getTestName());
+        appointmentDto.setPatientName(appointment.getPatientName());
+        appointmentDto.setLocation(appointment.getLocation());
+        appointmentDto.setAppointmentDate(appointment.getAppointmentDate().toLocalDate().toString());
+        appointmentDto.setAppointmentTime(appointment.getAppointmentDate().toLocalTime().toString());
+        return appointmentDto;
+    }
+
     public List<Appointment> findAppointments(Long userId) {
         return appointmentRepository.findAllByUserId(userId);
     }
