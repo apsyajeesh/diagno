@@ -1,10 +1,11 @@
 package com.perscholas.controller;
 
 import com.perscholas.dto.AppointmentDto;
-import com.perscholas.exception.UserNotFoundException;
 import com.perscholas.persistence.model.Appointment;
 import com.perscholas.persistence.model.User;
 import com.perscholas.service.AppointmentService;
+import com.perscholas.service.LocationService;
+import com.perscholas.service.TestService;
 import com.perscholas.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,18 +19,27 @@ import javax.validation.Valid;
 public class AppointmentController {
 
     private final AppointmentService appointmentService;
+    private final LocationService locationService;
     private final UserService userService;
+    private final TestService testService;
 
     public AppointmentController(AppointmentService appointmentService,
-                                 UserService userService) {
+                                 LocationService locationService,
+                                 UserService userService,
+                                 TestService testService) {
         this.appointmentService = appointmentService;
+        this.locationService = locationService;
         this.userService = userService;
+        this.testService = testService;
     }
+
 
     @GetMapping("/appointment/create")
     public String showCreateForm(Model model) {
         model.addAttribute("page", "appointment.html");
         model.addAttribute("appointment", new Appointment());
+        model.addAttribute("locations", locationService.findAll());
+        model.addAttribute("tests", testService.findAll());
         return "main";
     }
 

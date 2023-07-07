@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Test Locations and Tests</title>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="mb-3">
+        <p>Manage laboratory locations and tests offered!</p>
+    </div>
+    <form th:action="@{/location/save}"
+          method="post"
+          th:object="${location}">
+        <label for="locationName">Lab Location Name:</label>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="text" id="locationName" name="locationName" required th:field="*{location}"/>
+        <button type="submit">Add</button>
+    </form>
+    <div th:if="${not locations.isEmpty()}">
+        <h5 class="card-header">Locations</h5>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Location Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="location : ${locations}">
+                        <td th:text="${location.location}"></td>
+                        <td>
+                            <div class="d-flex">
+                                <a th:href="@{/location/{id}/delete(id=${location.id})}">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <form th:action="@{/test/save}"
+          method="post"
+          th:object="${test}">
+        <label for="testName">Test Name:</label>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="text" id="testName" name="testName" required th:field="*{testName}"/>
+        <button type="submit">Add</button>
+    </form>
+    <div th:if="${not tests.isEmpty()}">
+        <h5 class="card-header">Test Name</h5>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Test Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="test : ${tests}">
+                        <td th:text="${test.testName}"></td>
+                        <td>
+                            <div class="d-flex">
+                                <a th:href="@{/test/{id}/delete(id=${test.id})}">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

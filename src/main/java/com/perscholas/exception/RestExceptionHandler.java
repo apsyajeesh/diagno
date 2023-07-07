@@ -17,7 +17,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         super();
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(DataNotFoundException.class)
     protected ResponseEntity<Object> handleNotFound(Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, "User not found", new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }

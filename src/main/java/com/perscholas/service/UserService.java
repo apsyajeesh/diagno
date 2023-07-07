@@ -3,7 +3,7 @@ package com.perscholas.service;
 
 import com.perscholas.dto.UserDto;
 import com.perscholas.exception.UserIdMismatchException;
-import com.perscholas.exception.UserNotFoundException;
+import com.perscholas.exception.DataNotFoundException;
 import com.perscholas.persistence.model.Role;
 import com.perscholas.persistence.model.User;
 import com.perscholas.persistence.repo.RoleRepository;
@@ -53,25 +53,25 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findUser(Long id) throws UserNotFoundException {
+    public User findUser(Long id) throws DataNotFoundException {
         return userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(DataNotFoundException::new);
     }
-    public User findUserByEmail(String email)throws UserNotFoundException {
+    public User findUserByEmail(String email)throws DataNotFoundException {
         return userRepository.findByEmail(email).orElse(null);
     }
 
-    public void deleteUser(Long id) throws UserNotFoundException {
+    public void deleteUser(Long id) throws DataNotFoundException {
         userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(DataNotFoundException::new);
         userRepository.deleteById(id);
     }
-    public User updateUser(User user,Long id)throws UserIdMismatchException, UserNotFoundException {
+    public User updateUser(User user,Long id)throws UserIdMismatchException, DataNotFoundException {
         if (user.getId() != id) {
             throw new UserIdMismatchException();
         }
         userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(DataNotFoundException::new);
         return userRepository.save(user);
     }
 }

@@ -49,6 +49,7 @@ public class User {
     public List<Role> roles = new ArrayList<>();
 
 
+    public User(String john_doe, String email) {
 
-
+    }
 }

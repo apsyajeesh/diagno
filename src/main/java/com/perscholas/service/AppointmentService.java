@@ -1,8 +1,7 @@
 package com.perscholas.service;
 
 import com.perscholas.dto.AppointmentDto;
-import com.perscholas.exception.UserIdMismatchException;
-import com.perscholas.exception.UserNotFoundException;
+import com.perscholas.exception.DataNotFoundException;
 import com.perscholas.persistence.enums.AppointmentStatus;
 import com.perscholas.persistence.model.Appointment;
 import com.perscholas.persistence.repo.AppointmentRepository;
@@ -57,13 +56,13 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    public Appointment findAppointment(Long id) throws UserNotFoundException {
-        return appointmentRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    public Appointment findAppointment(Long id) throws DataNotFoundException {
+        return appointmentRepository.findById(id).orElseThrow(DataNotFoundException::new);
     }
 
-    public void deleteAppointment(Long id) throws UserNotFoundException {
+    public void deleteAppointment(Long id) throws DataNotFoundException {
         appointmentRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(DataNotFoundException::new);
         appointmentRepository.deleteById(id);
     }
 }

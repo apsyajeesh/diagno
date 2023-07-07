@@ -1,4 +1,4 @@
-package com.perscholas.persistence.model;
+package com.perscholas.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="tests")
-public class Test {
+public class TestDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
