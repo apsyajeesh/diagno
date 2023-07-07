@@ -1,18 +1,17 @@
 package com.perscholas.controller;
 
 import com.perscholas.dto.AppointmentDto;
+import com.perscholas.exception.UserNotFoundException;
 import com.perscholas.persistence.model.Appointment;
 import com.perscholas.persistence.model.User;
 import com.perscholas.service.AppointmentService;
 import com.perscholas.service.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @Controller
@@ -41,6 +40,15 @@ public class AppointmentController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(authentication.getName());
         appointmentService.createAppointment(user.getId(), appointmentDto);
+        return "redirect:/appointment?success";
+    }
+
+    @PutMapping("/appointment/{id}")
+    public String updateAppointment(@PathVariable("id") Long id,
+                                    @ModelAttribute("appointment") AppointmentDto updatedAppointment) throws UserNotFoundException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(authentication.getName());
+        appointmentService.createAppointment(user.getId(), updatedAppointment);
         return "redirect:/appointment?success";
     }
 }

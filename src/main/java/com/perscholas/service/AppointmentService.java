@@ -23,6 +23,7 @@ public class AppointmentService {
 
     public void createAppointment(Long userId, AppointmentDto appointmentDto) {
         Appointment appointment= new Appointment();
+        appointment.setId(appointmentDto.getId());
         appointment.setUserId(userId);
         appointment.setPatientName(appointmentDto.getPatientName());
         appointment.setTestName(appointmentDto.getTestName());
@@ -52,15 +53,6 @@ public class AppointmentService {
         appointmentRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
         appointmentRepository.deleteById(id);
-    }
-
-    public Appointment updateAppointment(Appointment appointment, Long id) throws UserIdMismatchException, UserNotFoundException {
-        if (appointment.getId() != id) {
-            throw new UserIdMismatchException();
-        }
-        appointmentRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
-        return appointmentRepository.save(appointment);
     }
 }
 

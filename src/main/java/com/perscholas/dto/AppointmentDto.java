@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentDto {
+    private Long id;
     private String testName;
     private String patientName;
     private String location;

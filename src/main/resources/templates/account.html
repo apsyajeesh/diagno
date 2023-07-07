@@ -1,14 +1,17 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
 <div th:fragment="content">
     <div class="mb-3">
         <p>Welcome, <span th:text="${user.firstName} + ' ' + ${user.lastName} + '!'"></span></p>
     </div>
     <div class="mb-3">
-        <a th:href="@{/appointment}" class="btn btn-sm btn-primary">Schedule Now</a>
+        <a th:href="@{/appointment}" class="btn btn-sm btn-primary">Schedule an appointment now</a>
     </div>
     <div class="card">
+        <div th:if="${not appointments.isEmpty()}">
         <h5 class="card-header">Recent appointments</h5>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,6 +24,7 @@
                         <th scope="col">When</th>
                         <th scope="col">Where</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Actions</th> <!-- Added column for icons -->
                     </tr>
                     </thead>
                     <tbody>
@@ -31,9 +35,17 @@
                         <td th:text="${appointment.appointmentDate}"></td>
                         <td th:text="${appointment.location}"></td>
                         <td th:text="${appointment.status}"></td>
+                        <td>
+                            <div class="d-flex">
+                                <button type="button" class="btn btn-primary" onclick="modifyAppointment(${appointment.id})">Modify</button>
+                                <button type="button" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </td>
                     </tr>
+
                     </tbody>
                 </table>
+            </div>
             </div>
         </div>
     </div>

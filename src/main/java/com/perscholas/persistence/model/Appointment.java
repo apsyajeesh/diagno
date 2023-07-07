@@ -12,16 +12,16 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name="appointments")
+@Table(name="appointment")
 public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "user_id")
-    private long userId;
+    private Long userId;
 
     @Column(name = "patient_name")
     private String patientName;
