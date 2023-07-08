@@ -33,7 +33,7 @@ public class User {
     private String password;
 
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private Long phoneNumber;
 
     @Column(name = "age")
     private Integer age;
