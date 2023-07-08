@@ -23,22 +23,20 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Code</th>
-                        <th scope="col">Test Name</th>
                         <th scope="col">Who</th>
                         <th scope="col">When</th>
                         <th scope="col">Where</th>
+                        <th scope="col">Test</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Actions</th> <!-- Added column for icons -->
+                        <th scope="col">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="appointment : ${appointments}">
-                        <td th:text="${appointment.id}"></td>
-                        <td th:text="${appointment.testName}"></td>
                         <td th:text="${appointment.patientName}"></td>
                         <td th:text="${appointment.appointmentDate}"></td>
                         <td th:text="${appointment.location}"></td>
+                        <td th:text="${appointment.testName}"></td>
                         <td th:text="${appointment.status}"></td>
                         <td>
                             <div class="d-flex">

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class AppointmentController {
@@ -40,6 +41,9 @@ public class AppointmentController {
         model.addAttribute("appointment", new Appointment());
         model.addAttribute("locations", locationService.findAll());
         model.addAttribute("tests", testService.findAll());
+        List<String> appointmentTimes = List.of("9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM",
+                "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM");
+        model.addAttribute("appointmentTimes", appointmentTimes);
         return "main";
     }
 
@@ -57,6 +61,11 @@ public class AppointmentController {
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("page", "appointment.html");
         model.addAttribute("appointment", appointmentService.editAppointment(id));
+        model.addAttribute("locations", locationService.findAll());
+        model.addAttribute("tests", testService.findAll());
+        List<String> appointmentTimes = List.of("9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM",
+                "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM");
+        model.addAttribute("appointmentTimes", appointmentTimes);
         return "main";
     }
     @GetMapping("/appointment/{id}/cancel")
