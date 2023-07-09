@@ -32,7 +32,6 @@ public class AuthController {
 
     @GetMapping(value = {"/", "index"})
     public String homePage(Model model) {
-        model.addAttribute("appName", appName);
         return "index";
     }
 
@@ -53,7 +52,6 @@ public class AuthController {
 
     @GetMapping("/register")
     public String registerPage(Model model) {
-        model.addAttribute("appName", appName);
         model.addAttribute("user", new UserDto());
         return "register";
     }
