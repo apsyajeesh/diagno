@@ -95,7 +95,12 @@ public class AppointmentController {
     @GetMapping("/appointment")
     public String findAppointment(@RequestParam("id") Long id, Model model) {
         model.addAttribute("page", "manage-appointment.html");
-        model.addAttribute("appointment", appointmentService.editAppointment(id));
-        return "main";
+        AppointmentDto appointmentDto = appointmentService.editAppointment(id);
+        if (appointmentDto == null) {
+            return "redirect:/appointment/manage?not_found";
+        } else {
+            model.addAttribute("appointment", appointmentDto);
+            return "main";
+        }
     }
 }

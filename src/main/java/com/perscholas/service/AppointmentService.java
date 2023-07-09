@@ -39,6 +39,9 @@ public class AppointmentService {
 
     public AppointmentDto editAppointment(Long id) {
         Appointment appointment = findAppointment(id);
+        if (appointment == null) {
+            return null;
+        }
         return convert(appointment);
     }
 
@@ -66,7 +69,7 @@ public class AppointmentService {
 
     public Appointment findAppointment(Long id) throws DataNotFoundException {
         return appointmentRepository.findById(id).
-                orElseThrow(DataNotFoundException::new);
+                orElse(null);
     }
 
     public void deleteAppointment(Long id) throws DataNotFoundException {

@@ -10,6 +10,11 @@
     <div class="mb-3">
         <h3>Manage Appointment</h3>
     </div>
+    <div th:if="${param.not_found}">
+        <div class="alert alert-info">
+            Appointment not found. Please check your confirmation code.
+        </div>
+    </div>
     <div class="card">
         <h5 class="card-header">Find an appointment</h5>
         <div class="card-body">
@@ -26,8 +31,8 @@
           autocomplete="off"
           th:action="@{/appointment/save}"
           th:object="${appointment}">
+        <div th:if="${appointment.patientName}">
         <div class="card">
-            <div th:if="${appointment}">
                 <h5 class="card-header">Appointment Information</h5>
                 <div class="card-body">
                     <div th:if="${param.success}">
@@ -78,7 +83,7 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <button type="submit">Update Status</button>
+                                        <button type="submit">Update</button>
                                     </div>
                                 </td>
                             </tr>
