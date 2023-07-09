@@ -16,4 +16,5 @@ public class AppointmentDto {
     private String location;
     private String appointmentDate;
     private String appointmentTime;
+    private String status;
 }

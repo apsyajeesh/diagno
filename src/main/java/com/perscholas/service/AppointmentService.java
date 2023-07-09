@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AppointmentService {
@@ -38,18 +39,24 @@ public class AppointmentService {
 
     public AppointmentDto editAppointment(Long id) {
         Appointment appointment = findAppointment(id);
+        return convert(appointment);
+    }
+
+    private AppointmentDto convert(Appointment appointment) {
         AppointmentDto appointmentDto = new AppointmentDto();
         appointmentDto.setId(appointment.getId());
         appointmentDto.setTestName(appointment.getTestName());
         appointmentDto.setPatientName(appointment.getPatientName());
         appointmentDto.setLocation(appointment.getLocation());
         appointmentDto.setAppointmentDate(appointment.getAppointmentDate().toLocalDate().toString());
-        appointmentDto.setAppointmentTime(appointment.getAppointmentDate().toLocalTime().toString());
+        appointmentDto.setAppointmentTime(appointment.getAppointmentDate().format(DateTimeFormatter.ofPattern("hh:mm a")));
+        appointmentDto.setStatus(appointment.getStatus());
         return appointmentDto;
     }
 
-    public List<Appointment> findAppointments(Long userId) {
-        return appointmentRepository.findAllByUserId(userId);
+    public List<AppointmentDto> findAppointments(Long userId) {
+        return appointmentRepository.findAllByUserId(userId)
+                .stream().map(this::convert).collect(Collectors.toList());
     }
 
     public Iterable<Appointment> findAll() {

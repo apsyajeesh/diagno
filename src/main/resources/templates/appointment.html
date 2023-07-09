@@ -76,7 +76,7 @@
                             <label th:each="time : ${appointmentTimes}" class="radio-button-label"
                                    style="margin-right: 10px;">
                                 <input type="radio" name="appointmentTime" th:value="${time}"
-                                       th:checked="${time == selectedTime}"/>
+                                       th:checked="${time == appointmentTime}"/>
                                 <span th:text="${time}"></span>
                             </label>
                         </div>

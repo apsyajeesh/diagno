@@ -1,4 +1,3 @@
-
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
@@ -17,41 +16,41 @@
             </div>
         </div>
         <div th:if="${not appointments.isEmpty()}">
-        <h5 class="card-header">Recent appointments</h5>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Who</th>
-                        <th scope="col">When</th>
-                        <th scope="col">Where</th>
-                        <th scope="col">Test</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="appointment : ${appointments}">
-                        <td th:text="${appointment.patientName}"></td>
-                        <td th:text="${appointment.appointmentDate}"></td>
-                        <td th:text="${appointment.location}"></td>
-                        <td th:text="${appointment.testName}"></td>
-                        <td th:text="${appointment.status}"></td>
-                        <td>
-                            <div class="d-flex">
-                                <a th:href="@{/appointment/{id}/edit(id=${appointment.id})}">Modify</a>
-                            </div>
+            <h5 class="card-header">Recent appointments</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Who</th>
+                            <th scope="col">When</th>
+                            <th scope="col">Where</th>
+                            <th scope="col">Test</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="appointment : ${appointments}">
+                            <td th:text="${appointment.patientName}"></td>
+                            <td th:text="${appointment.appointmentDate + ' ' + appointment.appointmentTime}"></td>
+                            <td th:text="${appointment.location}"></td>
+                            <td th:text="${appointment.testName}"></td>
+                            <td th:text="${appointment.status}"></td>
+                            <td>
+                                <div class="d-flex">
+                                    <a th:href="@{/appointment/{id}/edit(id=${appointment.id})}">Modify</a>
+                                </div>
 
-                            <div class="d-flex">
-                                <a th:href="@{/appointment/{id}/cancel(id=${appointment.id})}">Cancel</a>
-                            </div>
-                        </td>
-                    </tr>
+                                <div class="d-flex">
+                                    <a th:href="@{/appointment/{id}/cancel(id=${appointment.id})}">Cancel</a>
+                                </div>
+                            </td>
+                        </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
