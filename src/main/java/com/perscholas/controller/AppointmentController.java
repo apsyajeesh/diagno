@@ -78,14 +78,14 @@ public class AppointmentController {
     @GetMapping("/appointment/manage")
     public String showManageAppointmentForm(Model model) {
         model.addAttribute("page", "manage-appointment.html");
-        model.addAttribute("appointment", new Appointment());
+        model.addAttribute("appointment", new AppointmentDto());
         return "main";
     }
 
     @GetMapping("/appointment")
     public String findAppointment(@RequestParam("id") Long id, Model model) {
         model.addAttribute("page", "manage-appointment.html");
-        model.addAttribute("appointment", appointmentService.findAppointment(id));
+        model.addAttribute("appointment", appointmentService.editAppointment(id));
         return "main";
     }
 }

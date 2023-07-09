@@ -64,7 +64,8 @@ public class AppointmentService {
     }
 
     public Appointment findAppointment(Long id) throws DataNotFoundException {
-        return appointmentRepository.findById(id).orElseThrow(DataNotFoundException::new);
+        return appointmentRepository.findById(id).
+                orElseThrow(DataNotFoundException::new);
     }
 
     public void deleteAppointment(Long id) throws DataNotFoundException {
