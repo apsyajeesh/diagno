@@ -68,9 +68,24 @@ public class AppointmentController {
         model.addAttribute("appointmentTimes", appointmentTimes);
         return "main";
     }
+
     @GetMapping("/appointment/{id}/cancel")
     public String showCancelForm(@PathVariable("id") Long id, Model model) {
         appointmentService.deleteAppointment(id);
         return "redirect:/account?success";
+    }
+
+    @GetMapping("/appointment/manage")
+    public String showManageAppointmentForm(Model model) {
+        model.addAttribute("page", "manage-appointment.html");
+        model.addAttribute("appointment", new Appointment());
+        return "main";
+    }
+
+    @GetMapping("/appointment")
+    public String findAppointment(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("page", "manage-appointment.html");
+        model.addAttribute("appointment", appointmentService.findAppointment(id));
+        return "main";
     }
 }

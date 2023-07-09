@@ -9,6 +9,9 @@
                     Successfully scheduled an appointment
                 </div>
             </div>
+            <div class="mb-3">
+                <h3>Enter appointment details to schedule one</h3>
+            </div>
             <form method="POST"
                   class="needs-validation"
                   novalidate=""
@@ -16,9 +19,6 @@
                   th:action="@{/appointment/save}"
                   th:object="${appointment}">
 
-                <div class="mb-3">
-                    <p>Enter appointment details to schedule one!</p>
-                </div>
                 <input type="hidden" th:field="*{id}"/>
                 <div class="mb-3">
                     <input id="patient_name" type="text" class="form-control" name="patient_name" value="" required

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Appointment Status</title>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="mb-3">
+        <h3>Manage Appointment</h3>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Find an appointment</h5>
+        <div class="card-body">
+            <form th:action="@{/appointment(id=${id})}" method="get">
+                <label for="id">Appointment ID:</label>
+                <input type="text" id="id" name="id" required>
+                <button type="submit">Find Appointment</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div th:if="${appointment}">
+            <h5 class="card-header">Appointment Information</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Who</th>
+                            <th scope="col">When</th>
+                            <th scope="col">Where</th>
+                            <th scope="col">Test</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${appointment.patientName}"></td>
+<!--                            <td th:text="${appointment.appointmentDate + ' ' + appointment.appointmentTime}"></td>-->
+                            <td th:text="${appointment.location}"></td>
+                            <td th:text="${appointment.testName}"></td>
+                            <td>
+                                <select id="status" name="status" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Confirmed">Confirmed</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                </select>
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <a th:href="@{/appointment/{id}/edit(id=${appointment.id})}">Update Status</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
