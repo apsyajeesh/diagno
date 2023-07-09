@@ -33,7 +33,7 @@ public class AppointmentService {
                 .parse(appointmentDto.getAppointmentDate() + " " +
                         appointmentDto.getAppointmentTime().replace(",", ""), formatter);
         appointment.setAppointmentDate(appointmentTime);
-        appointment.setStatus(AppointmentStatus.SCHEDULED.name());
+        appointment.setStatus(appointmentDto.getStatus());
         appointmentRepository.save(appointment);
     }
 
@@ -45,6 +45,7 @@ public class AppointmentService {
     private AppointmentDto convert(Appointment appointment) {
         AppointmentDto appointmentDto = new AppointmentDto();
         appointmentDto.setId(appointment.getId());
+        appointmentDto.setUserId(appointment.getUserId());
         appointmentDto.setTestName(appointment.getTestName());
         appointmentDto.setPatientName(appointment.getPatientName());
         appointmentDto.setLocation(appointment.getLocation());

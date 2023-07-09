@@ -38,7 +38,9 @@ public class AppointmentController {
     @GetMapping("/appointment/create")
     public String showCreateForm(Model model) {
         model.addAttribute("page", "appointment.html");
-        model.addAttribute("appointment", new Appointment());
+        AppointmentDto appointmentDto = new AppointmentDto();
+        appointmentDto.setStatus("SCHEDULED");
+        model.addAttribute("appointment", appointmentDto);
         model.addAttribute("locations", locationService.findAll());
         model.addAttribute("tests", testService.findAll());
         List<String> appointmentTimes = List.of("9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM",
@@ -47,7 +49,7 @@ public class AppointmentController {
         return "main";
     }
 
-    @PostMapping("/appointment/save")
+    @PostMapping("/appointment/user/save")
     public String create(@Valid @ModelAttribute("appointment") AppointmentDto appointmentDto,
                          BindingResult result,
                          Model model) {
@@ -55,6 +57,14 @@ public class AppointmentController {
         User user = userService.findUserByEmail(authentication.getName());
         appointmentService.createAppointment(user.getId(), appointmentDto);
         return "redirect:/appointment/create?success";
+    }
+
+    @PostMapping("/appointment/save")
+    public String createAppointment(@Valid @ModelAttribute("appointment") AppointmentDto appointmentDto,
+                         BindingResult result,
+                         Model model) {
+        appointmentService.createAppointment(appointmentDto.getUserId(), appointmentDto);
+        return "redirect:/appointment/manage?success";
     }
 
     @GetMapping("/appointment/{id}/edit")

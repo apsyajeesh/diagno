@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AppointmentDto {
     private Long id;
+    private Long userId;
     private String testName;
     private String patientName;
     private String location;

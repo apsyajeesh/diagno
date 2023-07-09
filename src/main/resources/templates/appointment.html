@@ -16,10 +16,12 @@
                   class="needs-validation"
                   novalidate=""
                   autocomplete="off"
-                  th:action="@{/appointment/save}"
+                  th:action="@{/appointment/user/save}"
                   th:object="${appointment}">
 
                 <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:field="*{status}" />
+
                 <div class="mb-3">
                     <input id="patient_name" type="text" class="form-control" name="patient_name" value="" required
                            autofocus placeholder="Patient Name" th:field="*{patientName}"/>
@@ -89,7 +91,7 @@
                             Book Now
                         </button>
                     </div>
-                    <div>
+                </div>
             </form>
         </div>
     </div>

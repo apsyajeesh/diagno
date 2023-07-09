@@ -47,9 +47,4 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id ", referencedColumnName = "id"
             )})
     public List<Role> roles = new ArrayList<>();
-
-
-    public User(String john_doe, String email) {
-
-    }
 }

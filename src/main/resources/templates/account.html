@@ -22,6 +22,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th scope="col">Code</th>
                             <th scope="col">Who</th>
                             <th scope="col">When</th>
                             <th scope="col">Where</th>
@@ -32,6 +33,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="appointment : ${appointments}">
+                            <td th:text="${appointment.id}"></td>
                             <td th:text="${appointment.patientName}"></td>
                             <td th:text="${appointment.appointmentDate + ' ' + appointment.appointmentTime}"></td>
                             <td th:text="${appointment.location}"></td>
