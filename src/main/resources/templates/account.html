@@ -38,7 +38,7 @@
                             <td th:text="${appointment.appointmentDate + ' ' + appointment.appointmentTime}"></td>
                             <td th:text="${appointment.location}"></td>
                             <td th:text="${appointment.testName}"></td>
-                            <td th:text="${appointment.status}"></td>
+                            <td th:text="${appointment.status}" th:class="${appointment.status eq 'SCHEDULED' ? 'text-primary' : appointment.status eq 'CHECKED_IN' ? 'text-info' : appointment.status eq 'SAMPLE_COLLECTED' ? 'text-warning' : appointment.status eq 'RESULT_REVIEW' ? 'text-secondary' : appointment.status eq 'RESULT_READY' ? 'text-success' : 'text-danger'}"></td>
                             <td>
                                 <div class="d-flex">
                                     <a th:href="@{/appointment/{id}/edit(id=${appointment.id})}">Modify</a>
