@@ -2,15 +2,15 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <div th:fragment="content">
+    <div class="mb-3">
+        <h3>Schedule Appointment</h3>
+    </div>
     <div class="card shadow-lg">
         <div class="card-body p-5">
             <div th:if="${param.success}">
                 <div class="alert alert-info">
                     Successfully scheduled an appointment
                 </div>
-            </div>
-            <div class="mb-3">
-                <h3>Enter appointment details to schedule one</h3>
             </div>
             <form method="POST"
                   class="needs-validation"
