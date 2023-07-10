@@ -13,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 @Table(name="appointment")
+@EqualsAndHashCode
 public class Appointment {
 
     @Id
