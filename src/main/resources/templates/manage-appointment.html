@@ -15,6 +15,11 @@
             Appointment not found. Please check your confirmation code.
         </div>
     </div>
+    <div th:if="${param.success}">
+        <div class="alert alert-info">
+            Appointment updated successfully.
+        </div>
+    </div>
     <div class="card">
         <h5 class="card-header">Find an appointment</h5>
         <div class="card-body">
