@@ -46,5 +46,9 @@ You can register a user and login to experience the app. For demo pupose, each r
    - All other users will be assigned default USER Role.
        eg: user@diagno.com
 
+## Requirements covered for Capstone project
+- Followed the defined Project Structure, Standardization, and Conventions.
+- Added adequate unit tests for services and repository classes including parameterized tests.
+  
 
 
