@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
+/**
+ * This class helps to manage authorization and authentication
+ */
 @Controller
 public class AuthController {
     private UserService userService;

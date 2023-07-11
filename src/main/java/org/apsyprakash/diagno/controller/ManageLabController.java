@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
+/**
+ * This class manages laboratory management related activities like manage location and tests.
+ */
 @Controller
 public class ManageLabController {
 

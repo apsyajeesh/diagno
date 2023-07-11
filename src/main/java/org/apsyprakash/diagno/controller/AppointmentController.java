@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * This class provider api mappings for appointment related features
+ */
 @Controller
 public class AppointmentController {
 

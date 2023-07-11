@@ -6,6 +6,9 @@ import org.apsyprakash.diagno.persistence.model.Test;
 import org.apsyprakash.diagno.persistence.repo.TestRepository;
 import org.springframework.stereotype.Service;
 
+/**
+ * manages test management
+ */
 @Service
 public class TestService {
 
