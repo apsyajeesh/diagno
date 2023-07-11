@@ -28,14 +28,13 @@ Finally, lab technician can find all the appointments and update the status base
 
 ### Front End Layer
 - HTML, CSS, Thymeleaf, Javascript.
-### Api/ Servoce Layer
+### Api/ Service Layer
 - Sprint Boot, Thymeleaf, Spring Security, Spring JPA.
 ### Database
 - MySQL
 
 ## Database Schema
-![schema](https://github.com/apsyajeesh/diagno/assets/129886182/a219b4ca-fc5e-48d2-9a96-e986f521e199)
-
+![](db_schema.png)
 ## How to login
 
 You can register a user and login to experience the app. For demo pupose, each role is assigned for a user based on use email. 
