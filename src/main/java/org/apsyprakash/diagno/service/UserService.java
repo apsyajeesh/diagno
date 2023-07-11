@@ -4,6 +4,7 @@ package org.apsyprakash.diagno.service;
 import org.apsyprakash.diagno.dto.UserDto;
 import org.apsyprakash.diagno.exception.UserIdMismatchException;
 import org.apsyprakash.diagno.exception.DataNotFoundException;
+import org.apsyprakash.diagno.persistence.enums.UserRole;
 import org.apsyprakash.diagno.persistence.model.Role;
 import org.apsyprakash.diagno.persistence.model.User;
 import org.apsyprakash.diagno.persistence.repo.RoleRepository;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -35,17 +37,26 @@ public class UserService {
         user.setPhoneNumber(userDto.getPhoneNumber());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        Role role = roleRepository.findByName("ROLE_USER");
-        if (role == null) {
-            role = checkRoleExist();
-        }
-        user.setRoles(Arrays.asList(role));
+        user.setRoles(List.of(createRoleIfNotExist(userDto)));
         return userRepository.save(user);
     }
-    private Role checkRoleExist() {
-        Role role = new Role();
-        role.setName("ROLE_USER");
-        return roleRepository.save(role);
+
+    private Role createRoleIfNotExist(UserDto userDto) {
+        UserRole userRole;
+        if (userDto.getEmail().startsWith("admin")) {
+            userRole = UserRole.ROLE_ADMIN;
+        } else if (userDto.getEmail().startsWith("lt")) {
+            userRole = UserRole.ROLE_LT;
+        } else {
+            userRole = UserRole.ROLE_USER;
+        }
+        Role role = roleRepository.findByName(userRole.name());
+        if (role == null) {
+            role = new Role();
+            role.setName("ROLE_USER");
+            return roleRepository.save(role);
+        }
+        return role;
     }
 
 
