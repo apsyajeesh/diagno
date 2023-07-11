@@ -37,6 +37,7 @@ based on the actions performed.
 - MySQL
 
 ## Database Schema
+![](../../OneDrive/Desktop/schema.png)
 ## How to login
 1. Register user, for easiness a role is assigned for a user based on user email. 
    - If an email starts with prefix "admin", the user will be assigned to ADMIN role.
