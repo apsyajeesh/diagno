@@ -25,9 +25,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/index").permitAll()
-                .antMatchers("/account").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/appointment/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/manage").hasRole("ADMIN")
+                .antMatchers("/account").hasAnyRole("ADMIN", "USER", "LT")
+                .antMatchers("/appointment/**").hasAnyRole("ADMIN", "USER", "LT")
+                .antMatchers("/manage-lab").hasRole("ADMIN")
                 .and()
                 .formLogin(
                         form -> form
