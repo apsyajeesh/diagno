@@ -33,7 +33,6 @@ public class AppointmentController {
         this.testService = testService;
     }
 
-
     @GetMapping("/appointment/create")
     public String showCreateForm(Model model) {
         model.addAttribute("page", "appointment.html");
@@ -91,7 +90,7 @@ public class AppointmentController {
         return "main";
     }
 
-    @GetMapping("/appointment")
+    @GetMapping("/appointment/find")
     public String findAppointment(@RequestParam("id") Long id, Model model) {
         model.addAttribute("page", "manage-appointment.html");
         AppointmentDto appointmentDto = appointmentService.editAppointment(id);

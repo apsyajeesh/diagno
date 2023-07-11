@@ -23,7 +23,7 @@
     <div class="card">
         <h5 class="card-header">Find an appointment</h5>
         <div class="card-body">
-            <form th:action="@{/appointment(id=${id})}" method="get">
+            <form th:action="@{/appointment/find(id=${id})}" method="get">
                 <label for="id">Confirmation Code:</label>
                 <input type="text" id="id" name="id" required>
                 <button type="submit">Find Appointment</button>
